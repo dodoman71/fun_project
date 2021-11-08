@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1> Battery test</h1>
+    <div class="center">
+        <div class="border">
+            <div class="battery" id="battery">
+                <div class="lil">
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <h1 id="text">
+            <p>system currrent power level is :<span id="text2"></span> %</p>
+        </h1>
+    </div>
+
+
+
+</body>
+<script>
+    var batterylevel;
+    navigator.getBattery().then(function (battery) {
+        battery100 = battery.level * 100;
+        battery500 = battery.level * 500;
+        console.log(battery.level);
+
+        document.getElementById("text2").innerText = Math.floor(battery100);
+        document.getElementById("battery").style.width = battery500+"px";
+        if (battery500<50){
+            document.getElementById("battery").style.backgroundColor = "red"
+        } else if (battery500<150 && battery500>50){
+            document.getElementById("battery").style.backgroundColor = "orange"
+        } else (battery500>150){
+            document.getElementById("battery").style.backgroundColor = "green"
+        }
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: Guang;
+            src: url(unsteady.ttf);
+        }
+
+        p {
+            color: blue;
+            font-family: Guang;
+            text-transform: uppercase;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section>
+        <h1>font project</h1>
+
+        <label for="data">Enter your text</label> <br><br>
+
+        <input type="text" id="textdata">
+        <label for="size">Choose size</label>
+        <select id="size">
+            <option value="small">Small</option>
+            <option value="medium">medium</option>
+            <option value="large">large</option>
+        </select>
+        <input type="submit" onclick="hello()"> <br><br>
+
+
+
+
+
+    </section>
+    <section>
+        <p id="targetp"></p>
+
+    </section>
+</body>
+<script>
+
+
+    function hello() {
+        if (document.getElementById("size").value == "small") {
+            document.getElementById("targetp").style.fontSize = "30px"
+
+        } else if (document.getElementById("size").value == "medium") {
+            document.getElementById("targetp").style.fontSize = "60px"
+        } else if (document.getElementById("size").value == "large") {
+            document.getElementById("targetp").style.fontSize = "90px"
+        }
+
+        document.getElementById("targetp").innerText = document.getElementById("textdata").value;
+
+        var x = document.createElement("BUTTON");
+        var t = document.createTextNode("Clear me");
+        x.appendChild(t);
+        x.onclick = cleartext;
+        x.id = "clear";
+        document.body.appendChild(x);
+
+    }
+
+    function cleartext() {
+        document.getElementById("targetp").innerText = ""
+        document.getElementById("clear").remove();
+        document.getElementById("textdata").value ="";
+    }
+
+</script>
+
+</html>
